@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Pixelify Sans', system-ui;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  /* For pixel art backgrounds */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.title-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  z-index: 1000;
+  -webkit-app-region: drag;
+}
+
+.drag-region {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #f1f197;
+  flex-grow: 1;
+  user-select: none;
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+  -webkit-app-region: no-drag;
+}
+
+.window-controls button {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  -webkit-app-region: no-drag;
+}
+
+.window-controls button:hover {
+  transform: scale(1.1);
+}
+
+.window-controls button:active {
+  transform: scale(0.95);
+}
+
+.window-controls img {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(1px 1px #070002);
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.player-container {
+  padding: 5px 20px 15px;
+  width: 300px;
+  margin-top: 50px;
+  max-height: calc(100vh - 65px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pixel-frame {
+  padding: 10px;
+  background: transparent;
+}
+
+.screen {
+  text-align: center;
+  position: relative;
+}
+
+#dropArea {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px dashed transparent;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+#dropArea.dragover {
+  opacity: 0.7;
+  border-color: #d080aa;
+  background: rgba(208, 128, 170, 0.1);
+}
+
+.cover-image {
+  display: none;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 2px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.song-title {
+  font-size: 13px;
+  color: #eaec94;
+  margin: 3px 0;
+  min-height: 16px;
+  word-wrap: break-word;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 3px 0;
+}
+
+.img-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.img-button:hover {
+  transform: scale(1.1);
+}
+
+.img-button:active {
+  transform: scale(0.95);
+}
+
+.img-button img {
+  width: 55px;
+  height: 55px;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.progress-bar-container {
+  margin-top: 5px;
+  height: 10px;
+  border: 2px solid rgb(9, 0, 9);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4409e6 0%, #9485e9 100%);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+#fileinput {
+  display: none;
+}
+
+@media (max-width: 400px) {
+  .player-container {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .img-button img {
+    width: 60px;
+    height: 60px;
+  }
+}
